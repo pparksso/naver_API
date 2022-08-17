@@ -22,6 +22,9 @@ app.get("/", (req, res) => {
   res.send("hello heroku");
 });
 app.post("/papago", (req, res) => {
+  const trans01 = req.body.source;
+  const trans02 = req.body.target;
+  const txt = req.body.text;
   axios({
     method: "POST",
     url: `https://openapi.naver.com/v1/papago/n2mt`,
@@ -31,9 +34,9 @@ app.post("/papago", (req, res) => {
       "X-Naver-Client-Secret": NAVER_SECRET,
     },
     params: {
-      source: "en",
-      target: "ko",
-      text: "hi",
+      source: trans01,
+      target: trans02,
+      text: txt,
     },
   })
     .then((response) => {
