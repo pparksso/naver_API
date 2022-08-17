@@ -36,8 +36,8 @@ app.post("/papago", (req, res) => {
       text: "hi",
     },
   })
-    .then((res) => {
-      res.send(res.data);
+    .then((response) => {
+      res.send(response.data);
     })
     .catch((err) => {
       console.log(err);
