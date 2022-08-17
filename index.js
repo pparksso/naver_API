@@ -33,10 +33,15 @@ app.post("/papago", (req, res) => {
       "X-Naver-Client-Id": NAVER_ID,
       "X-Naver-Client-Secret": NAVER_SECRET,
     },
+    // params: {
+    //   source: trans01,
+    //   target: trans02,
+    //   text: txt,
+    // },
     params: {
-      source: trans01,
-      target: trans02,
-      text: txt,
+      source: "en",
+      target: "ko",
+      text: "hi",
     },
   })
     .then((response) => {
