@@ -21,6 +21,28 @@ app.use(express.json());
 app.get("/", (req, res) => {
   res.send("hello heroku");
 });
+app.post("/papago", (req, res) => {
+  axios({
+    method: "POST",
+    url: `https://openapi.naver.com/v1/papago/n2mt`,
+    headers: {
+      "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8",
+      "X-Naver-Client-Id": NAVER_ID,
+      "X-Naver-Client-Secret": NAVER_SECRET,
+    },
+    params: {
+      source: "en",
+      target: "ko",
+      text: "hi",
+    },
+  })
+    .then((res) => {
+      res.send(res.data);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+});
 app.post("/detectlang", async (req, res) => {
   const name = req.body.cityName;
   const encodeQuery = encodeURIComponent(name);
