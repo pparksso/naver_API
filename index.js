@@ -18,6 +18,9 @@ app.use(express.static(path.join(__dirname, "/public")));
 app.use(cors());
 app.use(express.json());
 
+app.get("/", (req, res) => {
+  res.send("hello heroku");
+});
 app.post("/detectlang", async (req, res) => {
   const name = req.body.cityName;
   const encodeQuery = encodeURIComponent(name);
