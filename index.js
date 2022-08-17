@@ -17,6 +17,7 @@ const PORT = app.get("port");
 app.use(express.static(path.join(__dirname, "/public")));
 app.use(cors());
 app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
 
 app.get("/", (req, res) => {
   res.send("hello heroku");
@@ -24,7 +25,7 @@ app.get("/", (req, res) => {
 app.post("/papago", (req, res) => {
   const trans01 = req.body.source;
   const trans02 = req.body.target;
-  const txt = req.body.text;
+  const txt = req.body.trans01;
   axios({
     method: "POST",
     url: `https://openapi.naver.com/v1/papago/n2mt`,
